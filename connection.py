@@ -13,7 +13,7 @@ class connection:
         print("CONNECTING TO PLUTO.....")
         try:
             sockID=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-        except socket.timeout:
+        except socket.TimeoutError:
             self.connectSock()
             
         except socket.InterruptedError:
