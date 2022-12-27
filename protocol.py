@@ -2,6 +2,6 @@ class protocol:
     def __init__(self) -> None:
         pass
 
-    def evaluateCommand():
+    def evaluateCommand(self):
         print("evaluating")
     
