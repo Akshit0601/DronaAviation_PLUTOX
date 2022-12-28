@@ -38,7 +38,7 @@ class connection:
         
 
 
-    def multi_Sock(self):
+    def multiSock(self):
         print("CONNECTING TO PLUTOS....")
 
         socket_list=list()
