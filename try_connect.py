@@ -1,7 +1,7 @@
-from connection import connection
+from connection import Connection
 
 
-test=connection("192.168.4.1",23)
+test = Connection()
 
-test_client=test.connectSock()
-
+test_client_single = test.connectSock()
+test_client_mul = test.multiSock()
