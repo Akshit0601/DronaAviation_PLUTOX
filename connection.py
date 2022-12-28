@@ -20,7 +20,7 @@ class Connection:
         except InterruptedError:
             sockID.connect((self.host, self.port))
         except socket.error as err:
-            print("couldn't connect with socket-server %s \n Terminating program")
+            print("couldn't connect with socket-server %s \n Terminating program" % err)
             sys.exit(1)
         return sockID
 
