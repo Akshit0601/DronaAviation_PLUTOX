@@ -19,13 +19,20 @@ class connection:
         except socket.InterruptedError:
             print("Interrupted..Trying again")
             self.connectSock()
-        else:
-            sockID.connect((self.host,self.port))
-
         
+        try:
+            sockID.connect((self.host,self.port))
+        except socket.error:
+            print("Connection error , Terminating program\n")
+            sys.exit(1)
+        except socket.gaierror:
+            print("issue in address,Terminating program\n")
+            sys.exit(1)
+
         return sockID
-
-
+            
+            
+        
     def multiSock(self):
         print("CONNECTING TO PLUTOS....")
 
