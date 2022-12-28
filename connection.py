@@ -3,32 +3,25 @@ from protocol import protocol
 import sys
 
 
-class connection:
-
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
+class Connection:
+    def __init__(self):
+        self.host = "192.168.4.1"
+        self.port = 23
 
     def connectSock(self):
+
         print("CONNECTING TO PLUTO.....")
-        try:
-            sockID = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        except socket.timeout:
-            self.connectSock()
 
-        except socket.InterruptedError:
-            print("Interrupted..Trying again")
-            self.connectSock()
-
+        sockID = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
             sockID.connect((self.host, self.port))
-        except socket.gaierror:
-            print("issue in address,Terminating program\n")
+        except socket.timeout:
+            sockID.connect((self.host, self.port))
+        except InterruptedError:
+            sockID.connect((self.host, self.port))
+        except socket.error as err:
+            print("couldn't connect with socket-server %s \n Terminating program")
             sys.exit(1)
-        except socket.error:
-            print("Connection error , Terminating program\n")
-            sys.exit(1)
-
         return sockID
 
     def multiSock(self):
