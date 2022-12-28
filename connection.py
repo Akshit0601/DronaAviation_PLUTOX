@@ -4,9 +4,9 @@ import sys
 
 class connection:
 
-    def __init__(self,host,port):
-        self.host=host
-        self.port=port
+    def __init__(self):
+        self.host="192.168.4.1"
+        self.port=23
 
 
     def connectSock(self):
