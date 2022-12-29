@@ -22,6 +22,8 @@ class Connection:
         except socket.error as err:
             print("couldn't connect with socket-server %s \n Terminating program" % err)
             sys.exit(1)
+            
+        sockID.setblocking(False)
         return sockID
 
     def multiSock(self):
