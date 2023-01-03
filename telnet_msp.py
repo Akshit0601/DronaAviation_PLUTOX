@@ -1,6 +1,6 @@
 import telnetlib
 import struct
-
+import socket
 
 class Connection:
 
@@ -28,9 +28,20 @@ class Connection:
         for i in payload:
             checksum^=ord(i)
         return checksum
-            
+    
+    
+    def test():
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.connect(("192.168.0.10", 5760))
+        sock.send(b"\x24\x4d\x3c\x00\x00\x00\x00\x00")
+        response = sock.recv(1024)
+        print(response)
+        sock.close()
+                 
         
 
+        
+        
 
 dummy=Connection()
 dummy.send_msp_packet()
