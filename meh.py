@@ -148,6 +148,9 @@ class drone(Thread):
                     tn.write(self.msp_altitude())
                     # time.sleep(0.5)
                     hdata=tn.read_very_eager()
+                    with open("output_log.txt","a+") as filehandle:
+                        filehandle.write(str(hdata)+"\n")
+                        
                     # data=int.from_bytes(hdata,"big")
                     # size=struct.calcsize()
                     # data=struct.unpack("<cccBBcccBBs",hdata)
